@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
+using Twitter_Backend.Models;
 
 namespace Twitter_Backend
 {
@@ -27,6 +29,9 @@ namespace Twitter_Backend
         {
 
             services.AddControllers();
+
+            services.AddDbContext<TwitterContext>(opt =>
+                                               opt.UseInMemoryDatabase("Tweets"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
