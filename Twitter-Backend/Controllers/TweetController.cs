@@ -9,7 +9,7 @@ using Twitter_Backend.Models;
 
 namespace Twitter_Backend.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[Tweet]")]
     [ApiController]
     public class TweetController : ControllerBase
     {
@@ -80,7 +80,7 @@ namespace Twitter_Backend.Controllers
             _context.Tweets.Add(tweet);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetTweet", new { id = tweet.Id }, tweet);
+            return CreatedAtAction(nameof(GetTweet), new { id = tweet.Id }, tweet);
         }
 
         // DELETE: api/Tweet/5
